@@ -42,10 +42,6 @@ public class AdministratorService {
 		return administrator;
 	}
 	
-//	public List<Administrator> findByName(String name){
-//		List<Administrator> administratorList = administratorRepository.findByName(name);
-//		return administratorList;
-//	}
 	
 	public Administrator findByMailAddress(String mailAddress) {
 		return administratorRepository.findByMailAddress(mailAddress);
