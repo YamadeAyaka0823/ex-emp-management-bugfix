@@ -79,5 +79,12 @@ public class AdministratorRepository {
 		}
 		return administratorList.get(0);
 	}
+	
+//	public List<Administrator> findByName(String name){
+//		String sql = "SELECT id, name, mail_address, password FROM administrators WHERE name = :name";
+//		SqlParameterSource param = new MapSqlParameterSource().addValue("name", name);
+//		List<Administrator> administratorList = template.query(sql, param, ADMINISTRATOR_ROW_MAPPER);
+//		return administratorList;
+//	}
 
 }

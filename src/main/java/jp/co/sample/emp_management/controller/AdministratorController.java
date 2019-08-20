@@ -1,5 +1,7 @@
 package jp.co.sample.emp_management.controller;
 
+
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
@@ -75,10 +77,20 @@ public class AdministratorController {
 		if(result.hasErrors()) {
 			return toInsert();
 		}
-		BeanUtils.copyProperties(form, administrator);
-		administratorService.insert(administrator);
+		
+		
+		if(administratorService.findByMailAddress(form.getMailAddress()) == null) {
+			BeanUtils.copyProperties(form, administrator);
+			administratorService.insert(administrator);
+			
+		}else {
+			model.addAttribute("errorMessage", "このメールアドレスはすでに使われています");
+			return toInsert();
+		}
 		return "redirect:/";
 	}
+	
+	
 
 	/////////////////////////////////////////////////////
 	// ユースケース：ログインをする
@@ -125,5 +137,7 @@ public class AdministratorController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+
 	
 }

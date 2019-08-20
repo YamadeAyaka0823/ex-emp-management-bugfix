@@ -1,5 +1,7 @@
 package jp.co.sample.emp_management.service;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,5 +40,14 @@ public class AdministratorService {
 	public Administrator login(String mailAddress, String passward) {
 		Administrator administrator = administratorRepository.findByMailAddressAndPassward(mailAddress, passward);
 		return administrator;
+	}
+	
+//	public List<Administrator> findByName(String name){
+//		List<Administrator> administratorList = administratorRepository.findByName(name);
+//		return administratorList;
+//	}
+	
+	public Administrator findByMailAddress(String mailAddress) {
+		return administratorRepository.findByMailAddress(mailAddress);
 	}
 }
