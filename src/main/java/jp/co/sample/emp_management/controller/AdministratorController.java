@@ -78,16 +78,22 @@ public class AdministratorController {
 			return toInsert();
 		}
 		
+		if(!form.getPassword().equals(form.getPasswordConfirm())) {
+			return toInsert();
+		}
 		
 		if(administratorService.findByMailAddress(form.getMailAddress()) == null) {
 			BeanUtils.copyProperties(form, administrator);
 			administratorService.insert(administrator);
 			
 		}else {
-			model.addAttribute("errorMessage", "このメールアドレスはすでに使われています");
+			result.rejectValue("mailAddress", null, "このメールアドレスはすでに使われています");
 			return toInsert();
 		}
+		
+		
 		return "redirect:/";
+		
 	}
 	
 	
