@@ -79,6 +79,7 @@ public class AdministratorController {
 		}
 		
 		if(!form.getPassword().equals(form.getPasswordConfirm())) {
+			result.rejectValue("passwordConfirm", null, "パスワードが違います");
 			return toInsert();
 		}
 		
