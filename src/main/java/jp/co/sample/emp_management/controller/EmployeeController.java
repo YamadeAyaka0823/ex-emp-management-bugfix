@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.sample.emp_management.domain.Employee;
-import jp.co.sample.emp_management.form.EmployeeForm;
+
 import jp.co.sample.emp_management.form.UpdateEmployeeForm;
 import jp.co.sample.emp_management.service.EmployeeService;
 
@@ -101,11 +101,12 @@ public class EmployeeController {
 	 * @return　従業員一覧
 	 */
 	@RequestMapping("/findByLikeName")
-	public String findByLikeName(@Validated EmployeeForm form, String name, Model model) {
-		List<Employee> employeeList = employeeService.findByLikeName(form.getName());
+	public String findByLikeName(String name, Model model) {
+		List<Employee> employeeList = employeeService.findByLikeName(name);
 		
 		if(employeeList.size() == 0) {
 			model.addAttribute("errorMessage","1件もありませんでした");
+			return showList(model);
 		}else {
 			model.addAttribute("employeeList", employeeList);
 		}
