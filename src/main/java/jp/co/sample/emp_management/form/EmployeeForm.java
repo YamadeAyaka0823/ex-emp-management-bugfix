@@ -1,5 +1,10 @@
 package jp.co.sample.emp_management.form;
-
+/**
+ * 従業員情報を表すフォーム.
+ * 
+ * @author ayaka.yamade
+ *
+ */
 
 
 public class EmployeeForm {

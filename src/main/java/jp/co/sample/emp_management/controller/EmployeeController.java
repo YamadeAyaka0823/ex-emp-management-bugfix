@@ -93,7 +93,13 @@ public class EmployeeController {
 		employeeService.update(employee);
 		return "redirect:/employee/showList";
 	}
-	
+	/**
+	 * 従業員曖昧検索.
+	 * @param form 従業員情報フォーム
+	 * @param name 従業員名
+	 * @param model モデル
+	 * @return　従業員一覧
+	 */
 	@RequestMapping("/findByLikeName")
 	public String findByLikeName(@Validated EmployeeForm form, String name, Model model) {
 		List<Employee> employeeList = employeeService.findByLikeName(form.getName());
