@@ -55,7 +55,12 @@
 			<li class="active"><a href="list.html" th:href="@{/employee/showList}">従業員リスト</a></li>
 		</ol>
 		
+		<strong>従業員検索</strong><br>
+		<form th:action="@{/employee/findByLikeName}">
+		<input type="text" name="name">
 		
+		<button>検索</button><span th:text="${errorMessage}"></span>
+		</form>
 
 		<!-- table -->
 		<div class="row">
